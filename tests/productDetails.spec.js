@@ -30,14 +30,32 @@ const productDetails = require('../src/productDetails');
 */
 
 describe('6 - Implemente os casos de teste para a função `productDetails`', () => {
-  it('Verifica se a função `productDetails` tem o comportamento esperado', () => {
-    fail('Teste vazio!');
-    // ESCREVA SEUS TESTES ABAIXO:
-    // Teste se productDetails é uma função.
+  it('Verifica se productDetails é uma função', () => {
+      // Teste se productDetails é uma função.
+    expect(typeof productDetails).toBe('function')
+  });
+
+  it('Verifica se o retorno da função é um array', () => {
     // Teste se o retorno da função é um array.
+    expect(Array.isArray(productDetails('Alcool gel', 'Máscara'))).toBeTruthy()
+  })  
+
+  it('Verifica se o array retornado contém dois itens dentro', () => {
     // Teste se o array retornado pela função contém dois itens dentro.
+    expect(Object.keys(productDetails('Alcool gel', 'Máscara'))).toHaveLength(2)
+  })
+  it('Verifica se os dois itens dentro do array retornado são objetos', () => {
     // Teste se os dois itens dentro do array retornado pela função são objetos.
+    expect(productDetails(typeof 'Alcool gel', 'Máscara')[0] && typeof productDetails('Alcool gel', 'Máscara')[1]).toBe('object')
+  })
+
+  it('Verifica se os objetos são diferentes, caso os parâmetros sejam diferentes. E verifica se os dois productIds terminam com 123', () => {
     // Teste se quando passado parâmetros diferentes entre si, os dois objetos também são diferentes entre si.
+    expect(productDetails('Alcool gel', 'Máscara')[0].name !== productDetails('Alcool gel', 'Máscara')[1].name).toBeTruthy()
+    expect(productDetails('Alcool gel', 'Máscara')[1].name !== productDetails('Alcool gel', 'Máscara')[0].name).toBeTruthy()
+
     // Teste se os dois productIds terminam com 123.
+    expect(Object.values(productDetails('Alcool gel', 'Máscara')[0].details.productId).join('').includes('123')).toBeTruthy()
+    expect(Object.values(productDetails('Alcool gel', 'Máscara')[1].details.productId).join('').includes('123')).toBeTruthy()
   });
 });
