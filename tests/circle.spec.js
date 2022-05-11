@@ -23,14 +23,37 @@ const circle = require('../src/circle');
 
 describe('4 - Implemente os casos de teste para a função `circle`', () => {
   it('Verifica se ao receber um raio, a função `circle` retorna um objeto contendo os valores esperados', () => {
-    fail('Teste vazio!');
-    // ESCREVA SEUS TESTES ABAIXO:
+    expect(circle(1)).toEqual({radius: 1, area: 3.14, circumference: 6.28})
+    expect(circle(7)).toEqual({radius: 7, area: 153.86, circumference: 43.96})
+  });
+      // ESCREVA SEUS TESTES ABAIXO:
     // Teste se circle retorna undefined, caso o parâmetro passado não seja um número.
+  it(`Verifica se 'circle' retorna undefined caso o parâmetro não seja um número`, () => {
+    expect(circle('dawda')).toBeUndefined()
+    expect(circle(true)).toBeUndefined()
+  })
+  it(`Verifica se circle retorna um objeto e se o objeto possui 3 propriedades`, () => {
     // Teste se circle retorna um objeto.
     // Teste se o objeto retornado possui 3 propriedades.
+    expect(typeof circle(3)).toBe('object')
+    expect(Object.values(circle(3)).length).toBe(3)
+  })
+    
     // Teste se a função, quando não recebe nenhum parâmetro, retorna undefined.
-    // Teste se dentro do objeto retornado, a função retorna uma `key` com `value` igual à circunferência correta para um círculo de raio 2.
-    // Teste se dentro do objeto retornado, a função retorna uma `key` com `value` igual à área correta para um círculo de raio 3.
+    it(`Verifica se 'circle' retorna undefined caso não tenha parâmetro`, () => {
+      expect(circle()).toBeUndefined()
+    })
+    
+    it(`Verifica se a função retorna uma 'key' com 'value' correto`, () => {
+      const teste1 = circle(2)
+      const teste2 = circle(3)
+      expect(circle(2)).toMatchObject(teste1)
+      expect(circle(3)).toMatchObject(teste2)
+    })
+
     // Teste se a função retorna, em um objeto, os dados corretos de um círculo de raio 3.
-  });
+    it(`Verifica se a função retorna, em um objeto, os dados corretos de um círculo de raio 3`, () => {
+      let coiso = circle(3)
+      expect(circle(3)).toMatchObject({radius: 3, area: 1, circumference: 18.84})
+    })
 });
