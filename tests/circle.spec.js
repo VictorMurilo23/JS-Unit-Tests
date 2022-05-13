@@ -26,12 +26,12 @@ describe('4 - Implemente os casos de teste para a função `circle`', () => {
     expect(circle(1)).toEqual({radius: 1, area: 3.14, circumference: 6.28})
     expect(circle(7)).toEqual({radius: 7, area: 153.86, circumference: 43.96})
   });
-      // ESCREVA SEUS TESTES ABAIXO:
-    // Teste se circle retorna undefined, caso o parâmetro passado não seja um número.
+
   it(`Verifica se 'circle' retorna undefined caso o parâmetro não seja um número`, () => {
     expect(circle('dawda')).toBeUndefined()
     expect(circle(true)).toBeUndefined()
   })
+
   it(`Verifica se circle retorna um objeto e se o objeto possui 3 propriedades`, () => {
     // Teste se circle retorna um objeto.
     // Teste se o objeto retornado possui 3 propriedades.
@@ -39,21 +39,20 @@ describe('4 - Implemente os casos de teste para a função `circle`', () => {
     expect(Object.values(circle(3)).length).toBe(3)
   })
     
-    // Teste se a função, quando não recebe nenhum parâmetro, retorna undefined.
-    it(`Verifica se 'circle' retorna undefined caso não tenha parâmetro`, () => {
-      expect(circle()).toBeUndefined()
-    })
-    
-    it(`Verifica se a função retorna uma 'key' com 'value' correto`, () => {
-      const teste1 = circle(2)
-      const teste2 = circle(3)
-      expect(circle(2)).toMatchObject(teste1)
-      expect(circle(3)).toMatchObject(teste2)
-    })
+  it(`Verifica se 'circle' retorna undefined caso não tenha parâmetro`, () => {
+    expect(circle()).toBeUndefined()
+  })
 
-    // Teste se a função retorna, em um objeto, os dados corretos de um círculo de raio 3.
-    it(`Verifica se a função retorna, em um objeto, os dados corretos de um círculo de raio 3`, () => {
-      let coiso = circle(3)
-      expect(circle(3)).toMatchObject({radius: 3, area: 1, circumference: 18.84})
+  it(`Verifica se a função retorna uma 'key' com 'value' correto`, () => {
+    const teste1 = circle(2)
+    const teste2 = circle(3)
+    expect(circle(2)).toMatchObject(teste1)
+    expect(circle(3)).toMatchObject(teste2)
+  })
+
+  it(`Verifica se a função retorna, em um objeto, os dados corretos de um círculo de raio 3`, () => {
+    expect(Object.values(circle(3))[0]).toBeCloseTo(3);
+    expect(Object.values(circle(3))[1]).toBeCloseTo(28.26);
+    expect(Object.values(circle(3))[2]).toBeCloseTo(18.84);
     })
 });

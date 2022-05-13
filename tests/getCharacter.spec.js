@@ -67,5 +67,4 @@ describe('9 - Implemente os casos de teste da função `getCharacter`', () => {
     expect(getCharacter('bRieNNe')).toMatchObject( { name: 'Brienne Tarth', class: 'Knight', phrases: [ 'Im No Lady, Your Grace.', 'I, Brienne Of Tarth, Sentence You To Die.' ] } )
     expect(getCharacter('MeLiSsanDrE')).toMatchObject( { name: 'Melissandre', class: 'Necromancer', phrases: [ 'Death By Fire Is The Purest Death.', 'For The Night Is Dark And Full Of Terrors.' ] } )
   })
-  // Teste se o parâmetro não é Case Sensitive, ou seja, independente de conter letras maiúsculas ou minúsculas retorna o mesmo objeto relativo a ele.
 });

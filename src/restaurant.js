@@ -92,7 +92,23 @@
 // - fará a soma do preço desses itens;
 // - retornará o valor somado acrescido de 10%.
 // DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
+const retornado = {};
 
-const createMenu = () => {};
+const createMenu = (meuMenu) => {
+  retornado.fetchMenu = () => meuMenu;
+  retornado.consumption = [];
+  retornado.order = (string) => retornado.consumption.push(string);
+  retornado.pay = () => {
+    let total = 0;
+    const tudo = { ...meuMenu.food, ...meuMenu.drink };
+    for (let index = 0; index < retornado.consumption.length; index += 1) {
+      if (Object.prototype.hasOwnProperty.call(tudo, retornado.consumption[index])) { // https://dmitripavlutin.com/check-if-object-has-property-javascript/ <-- me ajudou a fazer essa parte
+        total += tudo[retornado.consumption[index]];
+      }
+    }
+    return Number(total + ((10 / 100) * total)).toFixed(2);
+  };
+  return retornado;
+};
 
 module.exports = createMenu;
