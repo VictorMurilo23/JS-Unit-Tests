@@ -43,15 +43,18 @@ Retorno:
 
 describe('9 - Implemente os casos de teste da função `getCharacter`', () => {
   it(`Verifica se a função 'getCharacter' retorna o objeto correto para o parâmetro 'Arya'`, () => {
-    expect(getCharacter('Arya')).toMatchObject( { name: 'Arya Stark', class: 'Rogue', phrases: [ 'Not today', 'A girl has no name.' ] } )
+    const aryaObj = { name: 'Arya Stark', class: 'Rogue', phrases: [ 'Not today', 'A girl has no name.' ] }
+    expect(getCharacter('Arya')).toMatchObject(aryaObj)
   });
 
   it(`Verifica se a função 'getCharacter' retorna o objeto correto para o parâmetro 'Brienne'`, () => {
-    expect(getCharacter('Brienne')).toMatchObject( { name: 'Brienne Tarth', class: 'Knight', phrases: [ 'Im No Lady, Your Grace.', 'I, Brienne Of Tarth, Sentence You To Die.' ] } )
+    const brienneObj = { name: 'Brienne Tarth', class: 'Knight', phrases: [ 'Im No Lady, Your Grace.', 'I, Brienne Of Tarth, Sentence You To Die.' ] }
+    expect(getCharacter('Brienne')).toMatchObject(brienneObj)
   })
 
   it(`Verifica se a função 'getCharacter' retorna o objeto correto para o parâmetro 'Melissandre'`, () => {
-    expect(getCharacter('Melissandre')).toMatchObject( { name: 'Melissandre', class: 'Necromancer', phrases: [ 'Death By Fire Is The Purest Death.', 'For The Night Is Dark And Full Of Terrors.' ] } )
+    const melissandreObj = { name: 'Melissandre', class: 'Necromancer', phrases: [ 'Death By Fire Is The Purest Death.', 'For The Night Is Dark And Full Of Terrors.' ] }
+    expect(getCharacter('Melissandre')).toMatchObject(melissandreObj)
   })
 
   it(`Verifica se ao passar um nome que não está na tabela, a função retorna undefined.`, () => {
@@ -63,8 +66,14 @@ describe('9 - Implemente os casos de teste da função `getCharacter`', () => {
   })
   
   it(`Verifica se o parâmetro, independente de conter letras maiúsculas ou minúsculas, retorna o mesmo objeto relativo a ele`, () => {
-    expect(getCharacter('aRyA')).toMatchObject( { name: 'Arya Stark', class: 'Rogue', phrases: [ 'Not today', 'A girl has no name.' ] } )
-    expect(getCharacter('bRieNNe')).toMatchObject( { name: 'Brienne Tarth', class: 'Knight', phrases: [ 'Im No Lady, Your Grace.', 'I, Brienne Of Tarth, Sentence You To Die.' ] } )
-    expect(getCharacter('MeLiSsanDrE')).toMatchObject( { name: 'Melissandre', class: 'Necromancer', phrases: [ 'Death By Fire Is The Purest Death.', 'For The Night Is Dark And Full Of Terrors.' ] } )
+    const aryaObj = { name: 'Arya Stark', class: 'Rogue', phrases: [ 'Not today', 'A girl has no name.' ] }
+
+    const brienneObj = { name: 'Brienne Tarth', class: 'Knight', phrases: [ 'Im No Lady, Your Grace.', 'I, Brienne Of Tarth, Sentence You To Die.' ] }
+
+    const melissandreObj = { name: 'Melissandre', class: 'Necromancer', phrases: [ 'Death By Fire Is The Purest Death.', 'For The Night Is Dark And Full Of Terrors.' ] }
+
+    expect(getCharacter('aRyA')).toMatchObject(aryaObj);
+    expect(getCharacter('bRieNNe')).toMatchObject(brienneObj);
+    expect(getCharacter('MeLiSsanDrE')).toMatchObject(melissandreObj);
   })
 });

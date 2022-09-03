@@ -33,8 +33,6 @@ describe('4 - Implemente os casos de teste para a função `circle`', () => {
   })
 
   it(`Verifica se circle retorna um objeto e se o objeto possui 3 propriedades`, () => {
-    // Teste se circle retorna um objeto.
-    // Teste se o objeto retornado possui 3 propriedades.
     expect(typeof circle(3)).toBe('object')
     expect(Object.values(circle(3)).length).toBe(3)
   })
@@ -44,15 +42,15 @@ describe('4 - Implemente os casos de teste para a função `circle`', () => {
   })
 
   it(`Verifica se a função retorna uma 'key' com 'value' correto`, () => {
-    const teste1 = circle(2)
-    const teste2 = circle(3)
-    expect(circle(2)).toMatchObject(teste1)
-    expect(circle(3)).toMatchObject(teste2)
+    const teste1 = 12.56;
+    const teste2 = 18.84;
+    expect(circle(2).area).toBe(teste1);
+    expect(circle(3).circumference).toBe(teste2);
   })
 
   it(`Verifica se a função retorna, em um objeto, os dados corretos de um círculo de raio 3`, () => {
-    expect(Object.values(circle(3))[0]).toBeCloseTo(3);
-    expect(Object.values(circle(3))[1]).toBeCloseTo(28.26);
-    expect(Object.values(circle(3))[2]).toBeCloseTo(18.84);
+    expect(circle(3).circumference).toBe(18.84);
+    expect(circle(3).radius).toBe(3);
+    expect(circle(3).area).toBeCloseTo(28.26);
     })
 });

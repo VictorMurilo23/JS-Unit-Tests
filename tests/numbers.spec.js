@@ -23,8 +23,8 @@ describe('2 - Implemente os casos de teste para a função `numbers`', () => {
     expect(numbers([1, 2, '3', 4, 5])).toEqual(false)
   })
 
-  it(`Verifica se a função 'numbers' retorna 'false' quando recebe o array [1, 'a', 3]`, () => {
-    expect(numbers([1, 'a', 3])).toEqual(false)
+  it(`Verifica se a função 'numbers' retorna 'false' quando recebe o array [1, true, 3]`, () => {
+    expect(numbers([1, true, 3])).toEqual(false)
   })
   
   it(`Verifica se a função 'numbers' retorna 'false' quando recebe [' ']`, () => {

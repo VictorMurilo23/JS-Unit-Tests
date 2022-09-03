@@ -39,16 +39,34 @@ describe('6 - Implemente os casos de teste para a função `productDetails`', ()
   })  
 
   it('Verifica se o array retornado contém dois itens dentro', () => {
-    expect(Object.keys(productDetails('Alcool gel', 'Máscara'))).toHaveLength(2)
+    expect(productDetails('Alcool gel', 'Máscara')).toHaveLength(2)
   })
+
   it('Verifica se os dois itens dentro do array retornado são objetos', () => {
-    expect(productDetails(typeof 'Alcool gel', 'Máscara')[0] && typeof productDetails('Alcool gel', 'Máscara')[1]).toBe('object')
+    expect(typeof productDetails('Alcool gel', 'Máscara')[0]).toBe('object')
+    expect(typeof productDetails('Alcool gel', 'Máscara')[1]).toBe('object')
   })
 
   it('Verifica se os objetos são diferentes, caso os parâmetros sejam diferentes. E verifica se os dois productIds terminam com 123', () => {
-    expect(productDetails('Alcool gel', 'Máscara')[0].name !== productDetails('Alcool gel', 'Máscara')[1].name).toBeTruthy()
-    expect(productDetails('Alcool gel', 'Máscara')[1].name !== productDetails('Alcool gel', 'Máscara')[0].name).toBeTruthy()
-    expect(Object.values(productDetails('Alcool gel', 'Máscara')[0].details.productId).join('').includes('123')).toBeTruthy()
-    expect(Object.values(productDetails('Alcool gel', 'Máscara')[1].details.productId).join('').includes('123')).toBeTruthy()
+    const differentProducts = productDetails('Alcool gel', 'Máscara')
+    const sameProducts = productDetails('Máscara', 'Máscara')
+  
+    expect(differentProducts[0].name !== differentProducts[1].name)
+      .toBeTruthy()
+
+    expect(sameProducts[0].name === sameProducts[1].name)
+      .toBeTruthy()
+
+    expect(differentProducts[1].details.productId !== differentProducts[0].details.productId)
+      .toBeTruthy()
+
+    expect(sameProducts[1].details.productId === sameProducts[0].details.productId)
+      .toBeTruthy()
+
+    expect(differentProducts[0].details.productId.includes('123'))
+      .toBeTruthy()
+
+    expect(differentProducts[1].details.productId.includes('123'))
+      .toBeTruthy()
   });
 });
